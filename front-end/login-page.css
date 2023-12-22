@@ -1,0 +1,255 @@
+@font-face {
+  font-family: "custom_font";
+    src: url("front-fonts/ITC-Franklin-Gothic-LT-Medium.otf");
+  }
+
+body {
+  background-color:rgb(0, 0, 0);
+  margin-left:0;
+}
+
+/* #region Navbar */
+
+.navbar {
+
+  z-index: 1;
+  top: 0;
+  background-color: white;
+
+  display: flex;
+
+  width: 100%;
+  height: 80px;
+  padding: 0 20px;
+  border-bottom: 2px solid black;
+
+  /* Attempt at fixed position nav bar */
+  overflow: hidden;
+  position: fixed;
+
+  /* Please work for the transition as it slides up or down */
+  /* opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s; /* Add a transition for smooth fading */
+}
+
+.bar {
+  padding-top:4%;
+  border-right: 3px solid black;
+  margin-left:3px;
+}
+
+.logo {
+  height: 72.5%;
+  margin: 1%;
+  margin-left:0;
+  margin-right:1%;
+  margin-top:.5%;
+}
+
+.imgtxt {
+  height: 110%;
+  margin-top:-.5%;
+}
+
+/* All the formats for the objects on the left */
+
+/* Navbar links */
+.navbar a {
+
+  padding-top: 2%;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  width: auto; /* Set a fixed width for all links */
+  margin-bottom: 2%; /* Adjust margin for spacing between buttons */
+  position: relative; /* Position for pseudo-element */
+  display: inline-block; /* Allow for text width calculation */
+  overflow: hidden; /* Hide the initially larger underline */
+
+  padding-right: 2%;
+
+  font-family: custom_font;
+  font-size: 20px; 
+}
+
+.plswork {
+
+  margin-left: 49%;
+
+}
+
+/* Add expanding underline effect on hover */
+.navbar a::after {
+  content: ''; /* Create a pseudo-element */
+  position: absolute; /* Position it relative to the anchor tag */
+  left: 50%; /* Position it at the center */
+  bottom: 0px; /* Align it to the bottom */
+  width: 0; /* Initially no width */
+  height: 1px; /* Thickness of the underline */
+  background-color: black; /* Color of the underline */
+  transition: width 0.3s ease, left 0.3s ease; /* Add transition for smoother effect */
+  transform: translateX(-50%); /* Center the underline */
+}
+
+.navbar a:hover::after {
+  left: 40%; /* Start expanding from the left side */
+  width: 70%; /* Expand width to match text width */
+}
+
+/* Change link color on hover */
+.navbar a:hover {
+  color: white; 
+  text-shadow: -1px 1px 0 #000, 
+                1px 1px 0 #000, 
+               1px -1px 0 #000, 
+              -1px -1px 0 #000; 
+}
+
+/* #endregion Navbar */
+
+/* #region Content */
+
+  .content {
+
+    margin-left: 6px;
+    margin-top: 80px;
+  }
+
+/* variables? */
+
+:root {
+  --content-height: 580px;
+}
+
+/* #region Content_Home */
+  .content_home {
+    display: flex;
+    height: var(--content-height);
+    background-image: url("front-images/content-home/c-home-1.jpg");
+    background-size: cover;
+    
+    padding:0;
+    margin:0;
+
+  }
+  .square-home {
+
+    border-radius: 50px 0px 0px 50px;
+    outline: solid gray 1px;
+
+    /*format for the square inside the content-home*/
+    margin: auto;
+
+    height: 450px;
+    width:800px;
+
+    background: rgba(255,255,255,0.5);
+
+    /*extra details*/
+    /*border-radius: 50px 0px 0px 50px;*/
+
+    display:flex;
+    flex-direction: column;
+  }
+
+  .square-home-main-content {
+
+    padding: 15px 0px 0px 10px;
+
+    width:100%;
+    height:90%;
+
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+
+  }
+
+  .slideshow {
+    perspective: 1000px;
+  }
+  
+  .slideshow img {
+    width: 300px; /* Set image width as needed */
+    height: 200px; /* Set image height as needed */
+    transition: transform 0.5s ease; /* Add transition effect */
+    position: absolute;
+  }
+  
+  /* Initially, hide all images except the first one */
+  .slideshow img:not(.visible) {
+    transform: rotateY(-180deg);
+    pointer-events: none; /* Disable click events on hidden images */
+  }
+  
+  .visible {
+    z-index: 1; /* Ensure visibility of the currently displayed image */
+  }
+
+  .wrapper-for-navibar {
+
+    width: 100%;
+    height:10%;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navibar-small-dots {
+
+    border-radius: 10px 10px 10px 10px;
+
+    background-color: white;
+    outline: solid gray 1px;
+    width: 15%;
+    height: 60%;
+
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .small-dot {
+
+    background-color: white;
+    outline: solid black 1px;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    margin: 0px 10px 0px 10px;
+  }
+
+  .navbar-arrows {
+
+    margin: 5px 10px 0px 10px;
+    height: 50%;
+    width: 3%;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: transform 0.5s ease;
+
+  }
+
+/* #endregion Content_Home */
+
+  .content_functionality {
+    height: var(--content-height);
+    background: #82ac40;
+    padding:0;
+    margin:0;
+  }
+
+  .content_about_us {
+    height: var(--content-height);
+    background: #c72591;
+    padding:0;
+    margin:0;
+  }
+
+/* #endregion Content */
+
