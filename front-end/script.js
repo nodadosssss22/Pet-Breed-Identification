@@ -55,7 +55,7 @@ function scrollToDiv(sectionId) {
   const element = document.getElementById(sectionId);
   if (element) {
     const offset = 75; // Adjust this value as needed
-    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+    const elementPosition = element.getBoundingClientRect().top + window.scrollX;
     window.scrollTo({
       top: elementPosition - offset,
       behavior: 'smooth'
@@ -75,34 +75,65 @@ const images = [
 
 ];
 
-let currentIndex = 0;
-const imageElement = document.getElementById("image");
-const imageElement2 = document.getElementById("image2");
+// I want this part to move the image as i like relative to the current image being displayed.
+// I declared two indices to keep  track on what is the current index being displayed and perform
+// Certain actions in relation to the current index.
+var current_index = 0;
 
-function prevImage() {
-  currentIndex = (currentIndex - 1 + images.length) % images.length;
-  setImage();
+var circle_indicators = document.getElementById('navibar-small-dots').children;
+
+const image_cycling = document.getElementById("cycling-image");
+
+var lever = false;
+
+function previous_image() {
+  current_index = (current_index - 1 + images.length) % images.length;
+  change_image();
 }
 
-function nextImage() {
-  currentIndex = (currentIndex + 1) % images.length;
-  setImage();
+function next_image() {
+  current_index = (current_index + 1) % images.length;  
+  change_image();
 }
 
-function setImage() {
-  const nextImage = new Image();
-  nextImage.src = images[currentIndex];
-  nextImage.onload = function() {
-    const previousVisible = document.querySelector(".visible");
-    const nextVisible = previousVisible === imageElement ? imageElement2 : imageElement;
+function change_image() {
 
-    nextVisible.src = nextImage.src;
-    previousVisible.classList.remove("visible");
-    nextVisible.classList.add("visible");
-  };
+  let translateValue = 0;
+  if (current_index === 1) {
+    translateValue = 230;
+  } else if (current_index === 2) {
+    translateValue = 125;
+  }
+
+  for (i = 0; i < circle_indicators.length; i++){
+    var child = circle_indicators[i];
+
+    if (current_index === i) {
+      child.setAttribute("data-status","active");
+    } else {
+      child.setAttribute("data-status","inactive")
+    }
+  }
+
+  image_cycling.style.opacity = 0;
+  image_cycling.style.transition = "transform 0.5s ease-out, opacity 0.5s ease-out";
+
+  setTimeout(function () {
+    image_cycling.style.transform = `translateX(${translateValue}%)`;
+    image_cycling.src = images[current_index];
+    image_cycling.style.opacity = 1;
+  }, 200); // Adjust this delay as needed
+}
+
+// Function to automatically change image every 30 seconds
+function autoChangeImage() {
+  setInterval(function () {
+    next_image();
+  }, 30 * 1000); // 30 seconds in milliseconds
 }
 
 // Initialize with the first image
-setImage();
+autoChangeImage();
+circle_indicators[0].setAttribute("data-status","active");
 
 //#endregion

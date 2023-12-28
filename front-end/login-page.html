@@ -10,35 +10,43 @@
 
     <body>
         <div class = "navbar" id = "navbar">
-            <!-- The logo for the leftmost one -->  
-            <img src="front-images/logo-only-transparent-browser-title-for-black.ico" alt="logo" class="logo">
-            <p class="bar"></p>
-            <img src="front-images/petpick-text.png" alt="textlogo" class="imgtxt">
-            <!-- The buttons appear from bottom to up -->
-            <div class="plswork"></div>
-            <a href="#home" class = "navbar-right"  id = "scrollToTopLink">Home</a>
-            <a href="#functionality" class = "navbar-right" onclick="scrollToDiv('content_functionality')">Functionality</a>
-            <a href="#about-us" class = "navbar-right" onclick="scrollToDiv('content_about_us')">About Us</a>
-            <a href="#" class = "navbar-right">Login</a>
+            <div class="navbar-left-split">
+            <!-- The logo for the leftmost one -->
+                <img src="front-images/logo-only-transparent-browser-title-for-black.ico" alt="logo" class="logo">
+                <p class="bar"></p>
+                <img src="front-images/petpick-text.png" alt="textlogo" class="imgtxt">
+                <!-- The buttons appear from bottom to up -->
+`           </div>
+            <div class="navbar-links">
+                <a href="#home" class = "navbar-right"  id = "scrollToTopLink">Home</a>
+                <a href="#functionality" class = "navbar-right" onclick="scrollToDiv('content_functionality')">Functionality</a>
+                <a href="#about-us" class = "navbar-right" onclick="scrollToDiv('content_about_us')">About Us</a>
+                <a href="#" class = "navbar-right">Login</a>
+            </div>
         </div>
         <!-- Contents -->
         <div class="content">
             <div class = "content_home">
                 <div class="square-home" id="square-home">
                     <div class = "square-home-main-content">
-                        <div class = "slideshow">
-                            <img id="cycling-image1" src="front-images/content-home/c-home-cycling-images/cycling-image-1.png" alt="cycling-image" class="cycling-image">
-                            <img id="cycling-image2" src="front-images/content-home/c-home-cycling-images/cycling-image-2.png" alt="cycling-image" class="cycling-image">
-                        </div>    
+                            <img id="cycling-image" src="front-images/content-home/c-home-cycling-images/cycling-image-1.png" alt="cycling-image" class="cycling-image">
+                            <!--<div class = "square-text">
+                                <p class = "box-title">CHOOSING THE RIGHT PET CAN BE CONFUSING...?</p>
+                                <p class = "box-content">
+                                    With the variety of breeds and species of 
+                                    animals that we can choose from, it can be confusing for 
+                                    some to pick and choose their companion.
+                                </p>
+                            </div>-->
                     </div>
                     <div class = "wrapper-for-navibar">
                         <div class = "navbar-arrows">
                             <a href = "#" onclick="previous_image()" id = "image"><img src="front-images/content-home/arrow-button-left.png"> </a>
                         </div>
-                        <div class="navibar-small-dots">
-                            <span class = "small-dot" id = "dot1"></span>
-                            <span class = "small-dot" id = "dot2"></span>
-                            <span class = "small-dot" id = "dot3"></span>
+                        <div class="navibar-small-dots" id = "navibar-small-dots">
+                            <span class = "small-dot" data-status="inactive"></span>
+                            <span class = "small-dot" data-status="inactive"></span>
+                            <span class = "small-dot" data-status="inactive"></span>
                         </div>
                         <div class = "navbar-arrows">
                             <a href="#" onclick="next_image()" id = "image2"><img src="front-images/content-home/arrow-button-right.png"></a>
