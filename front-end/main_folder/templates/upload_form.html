@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petpick</title>
+    <link rel="stylesheet" href="../static/up.css">
+    <link rel="icon" type = "image/x-icon" href = "../static/logo-only-transparent-browser-title-for-black.ico">
+</head>
+<body>
+    <div class = "background_yay"></div>
+    <img src = "../static/bg-functionality.jpg" class="img_background">
+    <div class = "to_make_it_center">
+        <div class = "main_container">
+            <div class = "header_titler">
+                <div class = "ht_left">
+                    <p style = "font-family:adiba;font-size:30px;color:white;">PETPICK BREED IDENTIFIER</p>
+                </div>
+                <div class = "ht_right">
+                    <a href = "http://localhost/Pet-Breed-Identification/front-end/index.php#">Logout</a>
+                </div>
+            </div>
+            <div class = "LR">
+                <div class = "left">
+                    <div class = "left_up">
+                        <div class = "dotted_image_holder">
+                            <div class = "image_holder_1">
+                                <img src = "../static/to_display.jpg" class = "placeholder" id = "selectedImage"> <!--set it to be the image being uploaded-->
+                            </div>
+                        </div>
+                        <div class = "breed_holder">
+                            <p class = "breed_label">
+                                {{breed}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "left_down">
+                        <form action="/" method="post" enctype="multipart/form-data">
+                            <div class="left_down_up">
+                                <label for="fileInput" class="custom-file-upload">
+                                    Upload Image
+                                </label>
+                                <input type="file" name="fileInput" id="fileInput" onchange = "displayImage()">
+                            </div>
+                            <div class="left_down_down">
+                                <input type="submit" value="Submit Image" id = "upload" class = "custom-file-submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    function displayImage() {
+        var fileInput = document.getElementById('fileInput');
+        var selectedImage = document.getElementById('selectedImage');
+
+        // Check if a file is selected
+        if (fileInput.files && fileInput.files[0]) {
+            var reader = new FileReader();
+
+            // Read the selected file as a data URL
+            reader.onload = function (e) {
+                selectedImage.src = e.target.result;
+            };
+
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
+</script>
+
+</html>

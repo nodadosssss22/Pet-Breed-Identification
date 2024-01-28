@@ -1,0 +1,147 @@
+@font-face {
+    font-family: bornia;
+    src: url("login_fonts/bornia-regular.ttf");
+}
+
+@font-face {
+    font-family: bornia-bold;
+    src: url("login_fonts/bornia-bold.ttf");
+}
+
+body {
+    background-color: black;
+    margin: 0;
+    border: 0;
+}
+
+.img_background {
+    position: absolute;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100vw;
+    height: 100vh;
+    filter: blur(4px);
+    z-index: -1;
+}
+
+.main {
+    z-index: 1;
+    width: 100lvw;
+    height: 100lvh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.halves_container {
+
+    width: 800px;
+    height: 500px;
+
+    display: flex;
+    flex-direction: row;
+
+    box-shadow: -10px 10px 1rem black;
+
+    transform: flex-direction 0.5s;
+}
+
+@keyframes sliding_up_first_half {
+
+    0% {transform: translateX(50%);}
+    100% {transform: translateX(0%);}
+
+}
+
+.first_half {
+
+    transform: translateX(50%);
+
+    width: 40%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    border-radius: 3% 3% 0% 0%; 
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    animation-name: sliding_up_first_half;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+/* Attempt at Animation */
+
+@keyframes expand_padding {
+
+    0% {padding: 0% 0% 0% 0%;}
+    100% {padding: 55% 10% 55% 10%;}
+
+}
+
+.logo_first_half {
+
+    height: 50%;
+
+    animation-name: expand_padding;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-delay: 0.1s;
+
+}
+
+@keyframes sliding_down_second_half {
+
+    0% {transform: translateX(-50%);}
+    100% {transform: translateX(0%);}
+
+}
+
+.second_half {
+
+    transform: translateX(-50%);
+
+    width: 60%;
+    height: 100%;
+    background-color: white;
+
+    border-radius: 0% 0% 5% 0%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    animation-name: sliding_down_second_half;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.please {
+    font-family: bornia;
+    font-size: 1.5rem;
+    color: black;
+}
+
+.please:hover {
+
+    color: #B83B5E;
+
+}
+
+.login_title {
+
+    font-size: 1.7rem;
+    font-family: bornia-bold;
+
+}
+
+.check {
+
+    height: 50%;
+
+}

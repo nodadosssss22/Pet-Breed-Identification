@@ -81,8 +81,11 @@ const images = [
 var current_index = 0;
 
 var circle_indicators = document.getElementById('navibar-small-dots').children;
-
 const image_cycling = document.getElementById("cycling-image");
+
+const box_title = document.getElementById("box-title");
+const box_content = document.getElementById("box-content");
+const square_text = document.getElementById("square-text");
 
 var lever = false;
 
@@ -100,9 +103,65 @@ function change_image() {
 
   let translateValue = 0;
   if (current_index === 1) {
-    translateValue = 230;
+    translateValue = 210;
   } else if (current_index === 2) {
-    translateValue = 125;
+    translateValue = 130;
+  }
+
+  if (current_index === 0) {
+    image_cycling.style.height = "100%";
+    image_cycling.transform = "translateY(0%)";
+    /* Styles the text box relative to its position */
+      square_text.style.height = "100%";
+      square_text.style.transform = "translateX(0%)";
+      square_text.style.paddingLeft = "10%";
+      square_text.style.paddingRight = "2%";
+      square_text.style.clipPath = "polygon(0% 0%, 10% 10%, 10% 90%, 0% 100%, 100% 100%, 100% 0%)";
+      square_text.style.borderTopRightRadius = "5%";
+      square_text.style.borderBottomRightRadius = "5%";
+
+      square_text.style.height = "84%";
+      square_text.style.width = "50%";
+
+    box_title.innerHTML = "Choosing pets can be Confusing...";
+    box_content.innerHTML = "With the variety of breeds and species of " +
+                              "animals that we can choose from, it can be confusing for " + 
+                              "some to pick and choose their companion.";
+  }
+  if (current_index === 1) {
+    image_cycling.style.height = "100%";
+    image_cycling.transform = "translateY(0%)";
+    /* Styles the text box relative to its position */
+      square_text.style.height = "100%";
+      square_text.style.transform = "translateX(-45%)";
+      square_text.style.borderTopLeftRadius = "5%";
+      square_text.style.borderBottomLeftRadius = "5%";
+      square_text.style.paddingRight = "10%";
+      square_text.style.paddingLeft = "2%";
+      square_text.style.clipPath = "polygon(100% 0%, 90% 10%, 90% 90%, 100% 100%, 0% 100%, 0% 0%)";
+      square_text.style.height = "84%";
+      square_text.style.width = "50%";
+
+    box_title.innerHTML = "Let us help you, help pick your companion!";
+    box_content.innerHTML = "With identification just a click away " +
+                              "allow us to determine the breed and information of your " + 
+                              "cute, potential companions!";
+  }
+  if (current_index === 2) {
+    /* Styles everything relative to the current index */
+      image_cycling.style.height = "50%";
+      square_text.style.paddingRight = "10%";
+      square_text.style.paddingLeft = "10%";
+      square_text.style.paddingTop = "5%";
+      square_text.style.height = "25%";
+      square_text.style.clipPath = "polygon(0 0, 100% 0, 100% 100%, 0 100%)";
+      square_text.style.borderRadius = "0%";
+      square_text.style.borderRadius = "10%";
+
+      square_text.style.transform = "translate(-20%, 70%)";
+
+    box_title.innerHTML = "Discover Pets the Hi-Tech Way! With Our Petpick: Pet Companion Scanner App!";
+    box_content.innerHTML = "";
   }
 
   for (i = 0; i < circle_indicators.length; i++){
@@ -119,7 +178,13 @@ function change_image() {
   image_cycling.style.transition = "transform 0.5s ease-out, opacity 0.5s ease-out";
 
   setTimeout(function () {
-    image_cycling.style.transform = `translateX(${translateValue}%)`;
+    
+    if (current_index === 2) {
+      image_cycling.style.transform = `translate(${translateValue}%, -40%)`;
+    } else {
+      image_cycling.style.transform = `translateX(${translateValue}%)`;
+    }
+
     image_cycling.src = images[current_index];
     image_cycling.style.opacity = 1;
   }, 200); // Adjust this delay as needed
